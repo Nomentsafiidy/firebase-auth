@@ -1,0 +1,54 @@
+<div class="login_container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
+        <div>
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div>
+            <input formControlName="email" type="email" [placeholder]=" 'LOGIN.EMAIL'|translate " />
+        </div>
+        <div *ngIf=" f.email.errors && (f.email.dirty || f.email.touched) ">
+            <div class="text_danger" [hidden]="!f.email.errors.required">
+                {{ 'LOGIN.EMAIL_REQUIRED' |translate }}
+            </div>
+            <div class="text_danger" [hidden]="!f.email.errors.email">
+                {{ 'LOGIN.ENTER_VALID_EMAIL' |translate}}
+            </div>
+        </div>
+        <div>
+            <input formControlName="password" [type]="showPassword ? 'text' : 'password' " [placeholder]="'LOGIN.PASSWORD'|translate" />
+            <button (click)="showPassword = !showPassword " type="button" mat-icon-button>
+                <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+            <div class="text_danger" [hidden]="!f.password.errors.required">
+                {{'LOGIN.PASSWORD_REQUIRED'|translate}}
+            </div>
+        </div>
+        <div>
+            <button class="f_btn_warning" [disabled]="!loginForm.valid && !loading" type="submit">
+                {{ 'LOGIN.LOG_IN' | translate }}
+            </button>
+        </div>
+        <div>
+            <a routerLink="/register">{{ 'LOGIN.SIGN_UP' | translate }}</a>
+        </div>
+        <div>
+            <a routerLink="/forgot-password">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
+        </div>
+        <div [ngSwitch]="errorType">
+            <div class="text_danger" *ngSwitchCase="errorTypes.WRONG_PASSWORD">
+                {{'LOGIN.WRONG_PASSWORD'|translate}}
+            </div>
+            <div class="text_danger" *ngSwitchCase="errorTypes.USER_NOT_FOUND">
+                {{'LOGIN.USER_NOT_FOUND'|translate}}
+            </div>
+            <div class="text_danger" *ngSwitchCase="errorTypes.EMAIL_NOT_VERIFIED">
+                {{'LOGIN.EMAIL_NOT_VERIFIED' | translate}}
+            </div>
+        </div>
+        <div *ngIf="acces_error">
+            <span class="text_danger"> {{'LOGIN.ACCESS_DENIED'|translate}} </span>
+        </div>
+    </form>
+</div>

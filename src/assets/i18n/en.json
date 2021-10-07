@@ -1,0 +1,34 @@
+{
+    "LOGIN": {
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "BUTTON": "Login",
+        "EMAIL_REQUIRED": "Email is required",
+        "ENTER_VALID_EMAIL": "Please enter a valid email adress",
+        "PASSWORD_REQUIRED": "Password is required",
+        "WRONG_PASSWORD": "Wrong password",
+        "USER_NOT_FOUND": "User not found",
+        "ACCESS_DENIED": "Access denied",
+        "EMAIL_NOT_VERIFIED": "Email not verified",
+        "LOG_IN": "Log In",
+        "SIGN_UP": "Sign Up",
+        "FORGOT_PASSWORD": "Forgot Password"
+    },
+    "REGISTER": {
+        "TITLE": "Register",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "BUTTON": "Register",
+        "EMAIL_REQUIRED": "Email is required",
+        "ENTER_VALID_EMAIL": "Please enter a valid email adress",
+        "PASSWORD_REQUIRED": "Password is required",
+        "WRONG_PASSWORD": "Wrong password",
+        "USER_NOT_FOUND": "User not found",
+        "ACCESS_DENIED": "Access denied",
+        "FIRSTNAME": "Firstname",
+        "LASTNAME": "Lastname",
+        "PSEUDO": "Pseudo",
+        "PASSWORD_DONT_MATCH": "Passwords don't match",
+        "SIGN_UP": "S'inscrire"
+    }
+}

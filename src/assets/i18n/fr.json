@@ -1,0 +1,34 @@
+{
+    "LOGIN": {
+        "EMAIL": "Email",
+        "PASSWORD": "Mot de passe",
+        "BUTTON": "Se connecter",
+        "EMAIL_REQUIRED": "L'email est requis",
+        "ENTER_VALID_EMAIL": "S'il vous plaît, mettez une adresse email valide",
+        "PASSWORD_REQUIRED": "Mot de passe requis",
+        "WRONG_PASSWORD": "Mot de passe incorrect",
+        "USER_NOT_FOUND": "Utilisateur introuvable",
+        "ACCESS_DENIED": "Accès refusé",
+        "EMAIL_NOT_VERIFIED": "Email non vérifié",
+        "LOG_IN": "Se connecter",
+        "SIGN_UP": "S'inscrire",
+        "FORGOT_PASSWORD": "Mot de passe oublié"
+    },
+    "REGISTER": {
+        "TITLE": "S'inscrire",
+        "EMAIL": "Email",
+        "PASSWORD": "Mot de passe",
+        "BUTTON": "S'inscrire",
+        "EMAIL_REQUIRED": "L'email est requis",
+        "ENTER_VALID_EMAIL": "S'il vous plaît, mettez une adresse email valide",
+        "PASSWORD_REQUIRED": "Mot de passe requis",
+        "WRONG_PASSWORD": "Mot de passe incorrect",
+        "USER_NOT_FOUND": "Utilisateur introuvable",
+        "ACCESS_DENIED": "Accès refusé",
+        "FIRSTNAME": "Prénom",
+        "LASTNAME": "Nom",
+        "PSEUDO": "Pseudo",
+        "PASSWORD_DONT_MATCH": "Les mots de passe ne correspondent pas",
+        "SIGN_UP": "S'inscrire"
+    }
+}

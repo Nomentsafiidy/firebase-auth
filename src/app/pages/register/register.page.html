@@ -1,0 +1,89 @@
+<div>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <h1>{{ 'REGISTER.TITLE'|translate }}</h1>
+        <!-- firstname -->
+        <div>
+            <label for="firstname"> {{ 'REGISTER.FIRSTNAME'|translate }} </label>
+            <input name="firstame" formControlName="firstName" type="text" [placeholder]=" 'REGISTER.FIRSTNAME'|translate " />
+        </div>
+        <!-- lastname -->
+        <div>
+            <label for="lastname">{{ 'REGISTER.LASTNAME'|translate }} </label>
+            <input name="lastname" formControlName="lastName" type="text" [placeholder]=" 'REGISTER.LASTNAME'|translate " />
+        </div>
+        <!-- email  -->
+        <div>
+            <label for="email">{{ 'REGISTER.EMAIL'|translate }} </label>
+            <input name="email" formControlName="email" type="email" [placeholder]="'REGISTER.EMAIL'|translate" />
+        </div>
+        <!-- email errors  -->
+        <div *ngIf="f.email.errors && (f.email.dirty || f.email.touched)">
+            <div class="text_danger" [hidden]="!f.email.errors.required">
+                {{'REGISTER.EMAIL_REQUIRED'|translate}}
+            </div>
+            <div class="text_danger" [hidden]="!f.email.errors.email">
+                {{'REGISTER.ENTER_VALID_EMAIL'|translate}}
+            </div>
+        </div>
+        <!-- pseudo -->
+        <div>
+            <label for="pseudo">{{ 'REGISTER.PSEUDO'|translate }} </label>
+            <input name="pseudo" required class="f_input" formControlName="pseudo" type="text" [placeholder]="'REGISTER.PSEUDO'|translate" />
+        </div>
+        <!-- password  -->
+        <div>
+            <label for="password">{{ 'REGISTER.PASSWORD'|translate }} </label>
+            <input
+                name="password"
+                formControlName="password"
+                [type]=" showPassword ? 'text' : 'password'"
+                class="f_input"
+                [placeholder]="'REGISTER.PASSWORD'|translate"
+            />
+            <button (click)="showPassword = !showPassword " type="button" mat-icon-button>
+                <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+        </div>
+        <!-- password errors -->
+        <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+            <div class="text_danger" [hidden]="!f.password.errors.required">
+                {{'REGISTER.PASSWORD_REQUIRED'|translate}}
+            </div>
+        </div>
+        <div>
+            <label for="confirm">Confirm password</label>
+            <input
+                name="cofirm"
+                formControlName="confirmPassword"
+                [type]=" showConfirmPassword ? 'text' : 'password'"
+                class="f_input"
+                [placeholder]="'REGISTER.PASSWORD'|translate"
+            />
+            <button (click)="showConfirmPassword = !showConfirmPassword " type="button" mat-icon-button>
+                <mat-icon>{{ showConfirmPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+        </div>
+        <!-- confirmPassword errors -->
+        <div class="">
+            <div class="text_danger" *ngIf="f.confirmPassword.hasError('mustMatch')">
+                {{ 'REGISTER.PASSWORD_DONT_MATCH' | translate }}
+            </div>
+        </div>
+        <div>
+            <button class="f_btn_warning" [disabled]="!registerForm.valid && !loading" type="submit">
+                {{ 'SIGN_UP' | translate }}
+            </button>
+        </div>
+        <div [ngSwitch]="registerError">
+            <div class="text_danger" *ngSwitchCase="registerErrors.PSEUDO_ALREADY_TAKEN">
+                Pseudo already taken
+            </div>
+            <div class="text_danger" *ngSwitchCase="registerErrors.EMAIl_ALREADY_IN_USE">
+                Email already in use by another account
+            </div>
+        </div>
+        <div>
+            <a routerLink="/login">Revenir à la page login</a>
+        </div>
+    </form>
+</div>

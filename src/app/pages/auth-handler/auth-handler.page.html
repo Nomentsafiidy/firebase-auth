@@ -1,0 +1,69 @@
+<!-- VERIFY_EMAIL -->
+<div *ngIf="modeTypeActivated && modeTypeActivated === modeType.VERIFY_EMAIL">
+    <ng-container *ngIf="loading">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div>
+            <img height="300" src="../../../assets/img/success.gif" alt="" />
+        </div>
+        <div>
+            <h2>Votre adresse e-mail a bien été validée</h2>
+            <p>Vous pouvez maintenant vous connecter avec votre nouveau compte</p>
+            <div>
+                <a routerLink="/login">Login</a>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!-- reset password -->
+<form *ngIf="modeTypeActivated && modeTypeActivated === modeType.RESET_PASSWORD" [formGroup]="resetForm" (ngSubmit)="onResetPassword()">
+    <div>
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <!-- password  -->
+    <div>
+        <label for="password">{{ 'REGISTER.PASSWORD'|translate }} </label>
+        <input
+            name="password"
+            formControlName="password"
+            [type]=" showPassword ? 'text' : 'password'"
+            class="f_input"
+            [placeholder]="'REGISTER.PASSWORD'|translate"
+        />
+        <button (click)="showPassword = !showPassword " type="button" mat-icon-button>
+            <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+    </div>
+    <!-- password errors -->
+    <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+        <div class="text_danger" [hidden]="!f.password.errors.required">
+            {{'REGISTER.PASSWORD_REQUIRED'|translate}}
+        </div>
+    </div>
+    <div>
+        <label for="confirm">Confirm password</label>
+        <input
+            name="cofirm"
+            formControlName="confirmPassword"
+            [type]=" showConfirmPassword ? 'text' : 'password'"
+            class="f_input"
+            [placeholder]="'REGISTER.PASSWORD'|translate"
+        />
+        <button (click)="showConfirmPassword = !showConfirmPassword " type="button" mat-icon-button>
+            <mat-icon>{{ showConfirmPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+    </div>
+    <!-- confirmPassword errors -->
+    <div class="">
+        <div class="text_danger" *ngIf="f.confirmPassword.hasError('mustMatch')">
+            {{ 'REGISTER.PASSWORD_DONT_MATCH' | translate }}
+        </div>
+    </div>
+    <div>
+        <button type="submit" [disabled]="!f.password.value || !f.confirmPassword.value || f.confirmPassword.hasError('mustMatch')">
+            Reset password
+        </button>
+    </div>
+</form>
